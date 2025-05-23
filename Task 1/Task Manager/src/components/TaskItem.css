@@ -1,0 +1,30 @@
+.task-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.task-item.overdue {
+  background-color: #ffe6e6;
+  border-color: red;
+}
+
+.task-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.task-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.task-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.task-exit-active {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 300ms, transform 300ms;
+}

@@ -1,0 +1,33 @@
+{
+  "top_users": [
+    {
+      "user_id": "user7",
+      "action_count": 57
+    },
+    {
+      "user_id": "user1",
+      "action_count": 55
+    },
+    {
+      "user_id": "user8",
+      "action_count": 54
+    },
+    {
+      "user_id": "user2",
+      "action_count": 54
+    },
+    {
+      "user_id": "user4",
+      "action_count": 53
+    }
+  ],
+  "suspicious_activity": [
+    {
+      "user_id": "user_suspicious",
+      "action": "click",
+      "count_in_5_min": 11,
+      "window_start": "2025-05-23T18:15:09.854882+00:00",
+      "window_end": "2025-05-23T18:18:29.854882+00:00"
+    }
+  ]
+}
