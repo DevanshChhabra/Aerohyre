@@ -3,10 +3,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TaskList from '../components/TaskList';
 import FilterDropdown from '../components/FilterDropdown';
-import { TaskContext } from '../context/TaskContext';  // Make sure exported from TaskContext.js
-import { calculateUrgency } from '../utils/urgency';  // Import actual urgency function
+import { TaskContext } from '../context/TaskContext';  
+import { calculateUrgency } from '../utils/urgency';  
 
-// Mock tasks with consistent lowercase priority
 const mockTasks = [
   { id: 1, title: 'Submit report', deadline: '2025-05-21T23:59:59Z', priority: 'high' },
   { id: 2, title: 'Code review', deadline: '2025-05-25T12:00:00Z', priority: 'low' },
@@ -53,10 +52,9 @@ test('filters tasks by priority', async () => {
   expect(screen.getByText('Code review')).toBeInTheDocument();
   expect(screen.getByText('Prepare slides')).toBeInTheDocument();
 
-  // Change filter to 'high'
   await userEvent.selectOptions(screen.getByRole('combobox'), 'high');
 
-  // Only 'Submit report' (high priority) should be visible
+  // Only submit report (high priority) should be visible
   expect(screen.getByText('Submit report')).toBeInTheDocument();
   expect(screen.queryByText('Code review')).toBeNull();
   expect(screen.queryByText('Prepare slides')).toBeNull();
@@ -69,12 +67,11 @@ test('sorts tasks by urgency score (ascending)', () => {
     </CustomProvider>
   );
 
-  // Use the same calculateUrgency function your app uses
+
   const expectedOrder = [...mockTasks]
     .sort((a, b) => calculateUrgency(a) - calculateUrgency(b))
     .map(t => t.title);
 
-  // Wait for tasks to render
   const renderedTitles = screen.getAllByRole('heading', { level: 3 }).map(el => el.textContent);
 
   expect(renderedTitles).toEqual(expectedOrder);

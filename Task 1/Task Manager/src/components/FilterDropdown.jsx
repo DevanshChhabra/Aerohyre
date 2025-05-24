@@ -17,10 +17,8 @@ export default function FilterDropdown() {
   const { dispatch } = useTaskContext();
   const [filter, setFilter] = useState('all');
 
-  // Debounce the filter value by 300ms
   const debouncedFilter = useDebounce(filter, 300);
 
-  // Dispatch only when debouncedFilter changes
   useEffect(() => {
     dispatch({ type: 'SET_FILTER', payload: debouncedFilter });
   }, [debouncedFilter, dispatch]);

@@ -3,6 +3,8 @@ import { useTaskContext } from '../context/TaskContext';
 import TaskItem from './TaskItem';
 import { calculateUrgency } from '../utils/urgency';
 import Pagination from './Pagination';
+import './TaskList.css'; 
+import FilterDropdown from './FilterDropdown';
 
 const TASKS_PER_PAGE = 5;
 
@@ -27,19 +29,24 @@ export default function TaskList() {
   );
 
   return (
-    <>
-      <div className="task-list">
-        {paginatedTasks.map(task => (
-          <TaskItem key={task.id} task={task} />
-        ))}
-      </div>
-      {totalPages > 1 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
-      )}
-    </>
-  );
+  <div className="dashboard-container">
+    <h1>Task Manager Dashboard</h1>
+    <div className="priority-filter">
+      <FilterDropdown />
+    </div>
+    <div className="task-list">
+      {paginatedTasks.map(task => (
+        <TaskItem key={task.id} task={task} />
+      ))}
+    </div>
+    {totalPages > 1 && (
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
+    )}
+  </div>
+);
+
 }
